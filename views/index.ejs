@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Products</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <style>
+      /* this is only for 4 column Grid */
+      /* .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      } */
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .product {
+        border: 1px solid #ccc;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .product img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Products</h1>
+    <div class="grid">
+      <% products.forEach((product) => { %>
+      <div class="product">
+        <img src="<%= product.img %>" alt="<%= product.name %>" />
+        <h3><%= product.name %></h3>
+        <p><%= product.price %></p>
+        <i
+          class="fa fa-volume-up"
+          onclick="responsiveVoice.speak('<%= product.name %>', 'US English Female')"
+        ></i>
+      </div>
+      <% }); %>
+    </div>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=Yp1DI5vA"></script>
+  </body>
+</html>
